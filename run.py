@@ -3,8 +3,10 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 
 import gspread
+import colorama
 from google.oauth2.service_account import Credentials
-
+from colorama import init, Fore, Back, Style
+colorama.init(autoreset=True)
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -51,7 +53,7 @@ def validate_data(values):
             f"Exactly 6 values required, you provided {len(values)}"
         )
     except ValueError as e:
-        print(f"Invalid data {e}, pleasse try again.\n")
+        print(f"{Fore.RED}Invalid data {e}, pleasse try again.\n")
         return False
 
     return True
